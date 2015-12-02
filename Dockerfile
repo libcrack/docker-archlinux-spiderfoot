@@ -10,7 +10,7 @@ RUN pacman -Syy --noconfirm && \
         extra/libxml2 extra/libxslt extra/python2-lxml extra/swig
     #&& pacman-db-upgrade
 
-RUN pip2.7 install cherrypy lxml mako M2Crypto \
+RUN pip install cherrypy lxml mako M2Crypto \
     netaddr dns socks pyPdf metapdf openxmllib stem
 
 RUN groupadd spiderfoot && \
@@ -29,5 +29,5 @@ WORKDIR /spiderfoot
 EXPOSE 8080
 
 # Run the application.
-ENTRYPOINT ["/usr/bin/python"]
+ENTRYPOINT ["/usr/bin/python2"]
 CMD ["sf.py", "0.0.0.0:8080"]
