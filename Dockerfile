@@ -1,14 +1,14 @@
 FROM base/archlinux:latest
 
-MAINTAINER devnull@libcrack.so
+MAINTAINER libcrack <devnull@libcrack.so>
 
-RUN pacman -Syy --noconfirm && \
-    echo -e "[extra]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf && \
+RUN echo -e "[extra]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf && \
     echo -e "[community]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf && \
+    pacman -Syy --noconfirm && \
     pacman -S --noconfirm archlinux-keyring && \
+    pacman-db-upgrade && \
     pacman -S --noconfirm core/curl extra/git extra/python2-pip \
         extra/libxml2 extra/libxslt extra/python2-lxml extra/swig
-    #&& pacman-db-upgrade
 
 RUN pip install cherrypy lxml mako M2Crypto \
     netaddr dns socks pyPdf metapdf openxmllib stem
