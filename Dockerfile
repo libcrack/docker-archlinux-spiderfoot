@@ -1,5 +1,6 @@
 # FROM base/archsinux:latest
-FROM python:2.7
+# FROM python:2.7
+FROM python:3.5
 
 MAINTAINER libcrack <devnull@libcrack.so>
 
@@ -22,7 +23,7 @@ RUN curl -sSL https://github.com/smicallef/spiderfoot/archive/master.tar.gz \
   && mv /home/spiderfoot/spiderfoot-master /home/spiderfoot/spiderfoot \
   && chown -R spiderfoot:spiderfoot /home/spiderfoot \
   && pip install cherrypy lxml mako M2Crypto \
-       netaddr dns socks pyPdf metapdf openxmllib stem
+       netaddr socks pyPdf metapdf openxmllib stem dns
 
 USER spiderfoot
 WORKDIR /home/spiderfoot
