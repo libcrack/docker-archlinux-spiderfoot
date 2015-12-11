@@ -23,7 +23,8 @@ RUN curl -sSL https://github.com/smicallef/spiderfoot/archive/master.tar.gz \
   && mv /home/spiderfoot/spiderfoot-master /home/spiderfoot/spiderfoot \
   && chown -R spiderfoot:spiderfoot /home/spiderfoot \
   && pip install cherrypy lxml mako M2Crypto \
-       netaddr socks pyPdf metapdf openxmllib stem dns
+        netaddr pyPdf metapdf openxmllib stem dns \
+  && pip install --allow-all-external --allow-unverified socks socks
 
 USER spiderfoot
 WORKDIR /home/spiderfoot
