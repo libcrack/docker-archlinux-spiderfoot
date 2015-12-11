@@ -12,24 +12,22 @@ MAINTAINER libcrack <devnull@libcrack.so>
 #         extra/libxml2 extra/libxslt extra/python2-lxml extra/swig
 
 RUN groupadd spiderfoot && \
-    useradd -r -g spiderfoot -d /spiderfoot \
+    useradd -r -g spiderfoot -d /home/spiderfoot \
         -s /sbin/nologin -c "SpiderFoot User" spiderfoot
 
-WORKDIR /
+WORKDIR /home/spiderfoot
 
 RUN curl -sSL https://github.com/smicallef/spiderfoot/archive/master.tar.gz \
-  | tar -v -C / -xz \
-  && mv /spiderfoot-master /spiderfoot \
-  && chown -R spiderfoot:spiderfoot /spiderfoot \
+  | tar -v -C /home/spiderfoot -xz \
+  && mv /home/spiderfoot/spiderfoot-master /home/spiderfoot/spiderfoot \
+  && chown -R spiderfoot:spiderfoot /home/spiderfoot \
   && pip install cherrypy lxml mako M2Crypto \
        netaddr dns socks pyPdf metapdf openxmllib stem
 
-
 USER spiderfoot
-WORKDIR /spiderfoot
+WORKDIR /home/spiderfoot
 
 EXPOSE 8080
 
-# Run the application.
 ENTRYPOINT ["/usr/bin/python2"]
 CMD ["sf.py", "0.0.0.0:8080"]
