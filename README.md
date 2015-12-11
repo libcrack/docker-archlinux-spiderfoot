@@ -1,5 +1,7 @@
 # SpiderFoot Arch linux docker container
 
+[![](https://badge.imagelayers.io/libcrack/archlinux-spiderfoot:latest.svg)](https://imagelayers.io/?images=libcrack/archlinux-spiderfoot:latest 'libcrack/archlinux-spiderfoot')
+
 Build the image:
 
 ```bash
