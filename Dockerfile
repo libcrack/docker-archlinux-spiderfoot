@@ -7,7 +7,7 @@ RUN echo -e "[extra]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf 
     pacman -Syy --noconfirm && \
     pacman -S --noconfirm archlinux-keyring && \
     pacman-db-upgrade && \
-    pacman -S --noconfirm core/curl extra/git extra/python2-pip \
+    pacman -S --noconfirm core/curl extra/git extra/python-pip \
         extra/libxml2 extra/libxslt extra/python2-lxml extra/swig
 
 RUN pip install cherrypy lxml mako M2Crypto \
