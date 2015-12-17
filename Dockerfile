@@ -19,12 +19,13 @@ RUN groupadd spiderfoot && \
 WORKDIR /home/spiderfoot
 
 RUN curl -sSL https://github.com/smicallef/spiderfoot/archive/master.tar.gz \
-  | tar -v -C /home/spiderfoot -xz \
-  && mv /home/spiderfoot/spiderfoot-master /home/spiderfoot/spiderfoot \
-  && chown -R spiderfoot:spiderfoot /home/spiderfoot \
-  && pip install cherrypy lxml mako M2Crypto \
-        netaddr pyPdf metapdf openxmllib stem dns \
-  && pip install --allow-all-external --allow-unverified socks socks
+  | tar -v -C /home/spiderfoot -xz && \
+  mv /home/spiderfoot/spiderfoot-master /home/spiderfoot/spiderfoot && \
+  chown -R spiderfoot:spiderfoot /home/spiderfoot && \
+  pip install cherrypy lxml mako M2Crypto \
+        netaddr pyPdf metapdf openxmllib stem && \
+  pip install --allow-all-external --allow-unverified socks socks && \
+  pip install --allow-all-external --allow-unverified dns dns
 
 USER spiderfoot
 WORKDIR /home/spiderfoot
