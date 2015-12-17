@@ -14,8 +14,8 @@ RUN echo -e "[extra]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf 
         community/python-cherrypy community/python-netaddr && \
     pip install --upgrade pip && \
     pip install metapdf openxmllib stem pyPdf M2Crypto && \
-    pip install socks --allow-all-external socks --allow-unverified socks && \
-    pip install dns --allow-all-external dns --allow-unverified dns
+    pip install --allow-all-external --allow-unverified socks socks && \
+    pip install --allow-all-external --allow-unverified dns dns
 
 RUN groupadd spiderfoot && \
     useradd -r -g spiderfoot -d /home/spiderfoot \
@@ -33,5 +33,7 @@ WORKDIR /home/spiderfoot
 
 EXPOSE 8008
 
-ENTRYPOINT ["/usr/bin/python2"]
-CMD ["sf.py", "0.0.0.0:8008"]
+CMD "/bin/bash"
+
+# ENTRYPOINT ["/usr/bin/python2"]
+# CMD ["sf.py", "0.0.0.0:8008"]
