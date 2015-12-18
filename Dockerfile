@@ -35,7 +35,7 @@ USER spiderfoot
 
 WORKDIR /home/spiderfoot
 
-EXPOSE 8020
+EXPOSE 8000
 
 ENTRYPOINT ["/usr/bin/python2"]
-CMD ["sf.py", "0.0.0.0:8020"]
+CMD ["sf.py", "0.0.0.0:8000"]
