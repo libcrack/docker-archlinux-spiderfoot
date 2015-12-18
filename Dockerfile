@@ -8,12 +8,12 @@ RUN echo -e "[extra]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf 
     pacman -S --noconfirm archlinux-keyring && \
     pacman-db-upgrade && \
     pacman -S --noconfirm core/gcc core/openssl core/curl \
-        extra/git extra/python-pip extra/python-pyopenssl \
-        extra/libxml2 extra/libxslt extra/python-lxml  \
-        extra/swig extra/python-lxml extra/python-mako \
-        community/python-cherrypy community/python-netaddr && \
-    pip install --upgrade pip && \
-    pip install metapdf openxmllib stem pyPdf M2Crypto
+        extra/git extra/python2-pip extra/python2-pyopenssl \
+        extra/libxml2 extra/libxslt extra/python2-lxml  \
+        extra/swig extra/python2-lxml extra/python2-mako \
+        community/python2-cherrypy community/python2-netaddr && \
+    pip2 install --upgrade pip && \
+    pip2 install metapdf openxmllib stem pyPdf M2Crypto
 
 ## Collecting socks
 ##   Could not find a version that satisfies the requirement socks (from versions: )
@@ -35,9 +35,7 @@ USER spiderfoot
 
 WORKDIR /home/spiderfoot
 
-EXPOSE 8008
+EXPOSE 8020
 
-CMD "/bin/bash"
-
-# ENTRYPOINT ["/usr/bin/python2"]
-# CMD ["sf.py", "0.0.0.0:8008"]
+ENTRYPOINT ["/usr/bin/python2"]
+CMD ["sf.py", "0.0.0.0:8020"]
