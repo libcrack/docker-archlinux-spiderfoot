@@ -1,5 +1,6 @@
 NAME = $(shell basename `pwd | sed -e 's|docker-||g'`)
 TAG = $(shell date +%m%d)
+TAG = latest
 IMG = libcrack/$(NAME)
 PORT = 8000
 
