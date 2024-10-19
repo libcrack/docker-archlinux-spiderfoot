@@ -4,7 +4,7 @@ MAINTAINER libcrack <devnull@libcrack.so>
 
 RUN echo -e "[community]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf && \
     pacman-key --init && \
-    pacman-key --allow-weak-key-signatures  --populate && \
+    pacman-key --populate && \
     pacman-db-upgrade && \
     pacman -Syy --noconfirm && \
     pacman -S --noconfirm archlinux-keyring && \
