@@ -4,17 +4,17 @@ MAINTAINER libcrack <devnull@libcrack.so>
 
 RUN echo -e "[community]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf && \
     pacman-key --init && \
-    pacman-key --populate && \
+    pacman-key --populate --allow-weak-key-signatures && \
     pacman-db-upgrade && \
     pacman -Syy --noconfirm && \
     pacman -S --noconfirm archlinux-keyring && \
     pacman -S --noconfirm core/gcc core/libxml2 core/openssl core/curl \
         extra/git extra/python-pip extra/python-pyopenssl extra/libxslt \
         extra/python-lxml extra/swig extra/python-lxml extra/python-mako \
-        extra/python-cherrypy extra/python-netaddr && \
-        extra/python-stem extra/python-pyPdf extra/python-M2Crypto
-
+        extra/python-cherrypy extra/python-netaddr
+        
         # extra/python-metapdf extra/python-openxmllib && \ 
+        # extra/python-stem extra/python-pyPdf extra/python-M2Crypto
 
 ## Collecting socks
 ##   Could not find a version that satisfies the requirement socks (from versions: )
