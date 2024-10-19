@@ -3,9 +3,9 @@ FROM archlinux:latest
 MAINTAINER libcrack <devnull@libcrack.so>
 
 RUN echo -e "[community]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf && \
-    pacman-key --init && \
+    pacman-key --init --allow-weak-key-signatures && \
     pacman-key --populate && \
-    pacman-db-upgrade --allow-weak-key-signatures && \
+    pacman-db-upgrade && \
     pacman -Syy --noconfirm && \
     pacman -S --noconfirm archlinux-keyring && \
     pacman -S --noconfirm core/gcc core/libxml2 core/openssl core/curl \
