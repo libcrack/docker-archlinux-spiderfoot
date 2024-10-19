@@ -1,4 +1,4 @@
-# SpiderFoot API KEY LIST
+# SpiderFoot API KEY LIST
 
 From: <https://pastebin.com/raw/wbVrsYuF>
 
