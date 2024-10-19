@@ -15,14 +15,14 @@ env:
 jobs:
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --no-cache --force-rm --file Dockerfile --tag ${{ env.IMAGE_NAME }}:${{ env.TAG_NAME }}
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - name: Test the Docker image
@@ -30,7 +30,7 @@ jobs:
         
   push_to_registry:
     name: Push Docker image to Docker Hub
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
