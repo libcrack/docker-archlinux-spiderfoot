@@ -12,10 +12,9 @@ RUN echo -e "[community]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.c
         extra/git extra/python-pip extra/python-pyopenssl extra/libxslt \
         extra/python-lxml extra/swig extra/python-lxml extra/python-mako \
         extra/python-cherrypy extra/python-netaddr && \
-        extra/python-openxmllib && \ 
         extra/python-stem extra/python-pyPdf extra/python-M2Crypto
 
-        # extra/python-metapdf 
+        # extra/python-metapdf extra/python-openxmllib && \ 
 
 ## Collecting socks
 ##   Could not find a version that satisfies the requirement socks (from versions: )
