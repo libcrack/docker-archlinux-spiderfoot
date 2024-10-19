@@ -1,6 +1,6 @@
 FROM archlinux:latest
 
-MAINTAINER libcrack <devnull@libcrack.so>
+MAINTAINER libcrack <libcrack@users.noreply.github.com>
 
 RUN echo -e "[community]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf && \
     pacman-key --init && \
