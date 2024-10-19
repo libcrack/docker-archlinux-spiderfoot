@@ -28,7 +28,6 @@ jobs:
       - name: Test the Docker image
         run: docker run -d -p ${{ env.PORT }}:${{ env.PORT }} --name ${{ env.IMAGE_NAME }} ${{ env.TAG_NAME }}
         
-        
   push_to_registry:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
