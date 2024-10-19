@@ -2,7 +2,6 @@ FROM archlinux:latest
 
 MAINTAINER libcrack <devnull@libcrack.so>
 
-# RUN echo -e "[extra]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf && \
 RUN echo -e "[community]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf && \
     pacman-key --init && \
     pacman-key --populate && \
@@ -13,8 +12,8 @@ RUN echo -e "[community]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.c
         extra/git extra/python-pip extra/python-pyopenssl extra/libxslt \
         extra/python-lxml extra/swig extra/python-lxml extra/python-mako \
         extra/python-cherrypy extra/python-netaddr && \
-    pip install --upgrade pip && \
-    pip install metapdf openxmllib stem pyPdf M2Crypto
+        extra/python-metapdf extra/python-openxmllib && \ 
+        extra/python-stem extra/python-pyPdf extra/python-M2Crypto
 
 ## Collecting socks
 ##   Could not find a version that satisfies the requirement socks (from versions: )
