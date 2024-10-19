@@ -3,10 +3,10 @@ FROM archlinux:latest
 MAINTAINER libcrack <devnull@libcrack.so>
 
 RUN echo -e "[community]\nInclude = /etc/pacman.d/mirrorlist\n" >> /etc/pacman.conf && \
-    pacman-key --init --allow-weak-key-signatures && \
+    pacman-key --init && \
     pacman-key --populate && \
     pacman-db-upgrade && \
-    pacman -Syy --noconfirm && \
+    pacman -Syy --noconfirm --allow-weak-key-signatures && \
     pacman -S --noconfirm archlinux-keyring && \
     pacman -S --noconfirm core/gcc core/libxml2 core/openssl core/curl \
         extra/git extra/python-pip extra/python-pyopenssl extra/libxslt \
