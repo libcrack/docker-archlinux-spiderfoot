@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Test the Docker image
-        run: docker run -d -p $(PORT):$(PORT) --name ${{ env.IMAGE_NAME }} ${{ env.TAG_NAME }}
+        run: docker run -d -p ${{ env.PORT }}:${{ env.PORT }} --name ${{ env.IMAGE_NAME }} ${{ env.TAG_NAME }}
         
         
   push_to_registry:
