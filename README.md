@@ -20,3 +20,4 @@ Alternatively, you can run the image pulling it directly from hub.docker.com:
 docker run -d -p 8000:8000 --name spiderfoot libcrack/archlinux-spiderfoot
 ```
 
+THIS IS AN UPDATE OF THE README
