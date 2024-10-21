@@ -15,4 +15,4 @@ run:
 	docker run -d -p $(PORT):$(PORT) --name $(NAME) $(TAG)
 
 .PHONY: help build run
-.SILENT: help
+.SILENT: help build run
